@@ -28,6 +28,9 @@ namespace Ticketing
 
         private void cmdCalculate_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtQuantity.Text))
+                txtQuantity.Text = "1";
+
             mQuantity = int.Parse(txtQuantity.Text);
 
             if (chkDiscount.Checked)
@@ -39,6 +42,8 @@ namespace Ticketing
                 { mSection = 2; }
             if (radBox.Checked)
                 { mSection = 3; }
+            if (radStalls.Checked)
+                { mSection = 4; }
 
             mTicketPrice = new TicketPrice(mSection, mQuantity, mDiscount);
 
